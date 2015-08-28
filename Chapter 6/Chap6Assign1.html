@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+
+<html>
+
+	<head>
+		<title>Chapter 6 Assignment 1</title>
+	</head>
+
+	<body style="background-color: #808080;">
+
+		<script type="text/javascript">
+		
+			var grade1 = prompt("Enter grade for Exam 1:");
+			var grade2 = prompt("Enter grade for Exam 2:");
+			var grade3 = prompt("Enter grade for Exam 3:");
+			
+			avg = parseInt((grade1 + grade2 + grade3) / 3);
+			
+			var gradeLetter = "";
+			
+			if(avg >= 91) {
+				gradeLetter = "A";
+			} else if(avg >= 81) {
+				gradeLetter = "B";
+			} else if(avg >= 71) {
+				gradeLetter = "C";
+			} else if(avg >= 65) {
+				gradeLetter = "D";
+			} else {
+				gradeLetter = "F";
+			}
+			
+			var comment = "";
+			
+			switch(gradeLetter) {
+				case "A":
+					comment = "Great Job, Keep it up!";
+					break;
+				
+				case "B":
+					comment = "Very nice work.";
+					break;
+				
+				case "C":
+					comment = "You can do it. Keep studying.";
+					break;
+					
+				case "D":
+					comment = "You need some help. See the teacher.";
+					break;
+					
+				case "F":
+					comment = "Please schedule an appointment with your advisor.";
+					break;
+			}
+			
+			document.write("Your 3 exam scores are:<br>");
+			document.write("<div>Exam 1: " + grade1 + "<br>");
+			document.write("Exam 2: " + grade2 + "<br>");
+			document.write("Exam 3: " + grade3 + "</div><br>");
+			document.write("<div>Average: " + avg + "<br>");
+			document.write("Course Grade: " + gradeLetter + "<br>");
+			document.write(comment);
+			
+		</script>
+
+	</body>
+
+</html>

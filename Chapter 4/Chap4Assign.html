@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<title>Chapter 4 Assignment</title>
+</head>
+
+<body style="background-color: ">
+	
+	<script>
+		var hoursWorked = prompt('Enter hours worked:');
+		var payRate = parseInt(prompt('Enter pay rate:'));
+		var tax = parseInt(prompt('Tax percentage:')) / 100;
+		
+		function calculatePay(hoursWorked, payRate, tax) {
+			var taxAmt = (hoursWorked * payRate) * tax;
+			var netPay = (hoursWorked * payRate) - taxAmt;
+			
+			return taxAmt, netPay;
+		}
+	</script>
+	
+</body>
+
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE HTML>
+
+<html>
+
+	<head>
+		<title>Chapter 8 Assignment</title>
+
+		<style>
+			div {
+				position: absolute;
+				display: block;
+				left: 450px;
+			}
+
+			#browser_title {
+				top: 100px;
+			}
+
+			#browser_info {
+				top: 175px;
+			}
+
+			#person_title {
+				top: 400px;
+			}
+
+			#person_info {
+				top: 475px;
+			}
+		</style>
+	</head>
+
+	<body style="background-color: #551A8B; color: #FFFFFF;">
+
+		<script type="text/javascript">
+
+			var people = [];
+			objCount = 0;
+
+			document.write("<div id='browser_title'>");
+			document.write("<h1><u>Browser Settings</u></h1><br>");
+			document.write("</div>");
+
+			if(navigator.javaEnabled()) {
+				document.write("<div id='browser_info'>");
+				document.write("Java is enabled!<br>");
+			} else {
+				document.write("<div id='browser_info'>");
+				document.write("Java is NOT enabled!<br>");
+			}
+
+			document.write("Browser Platform: " + navigator.platform + "<br>");
+			document.write("Browser Codename: " + navigator.appCodeName + "<br>");
+			document.write("Browser Name: " + navigator.appName + "<br>");
+			document.write("Browser Versionkey: " + navigator.appVersion + "<br>");
+			document.write("</div>");
+
+			var first = prompt("First name:");
+			var first_arr = first.split("");
+			first_arr [0] = first_arr[0].toUpperCase();
+			first = first_arr.join("");
+
+			var last = prompt("Last name:");
+			var last_arr = last.split("");
+			last_arr[0] = last_arr[0].toUpperCase();
+			last = last_arr.join("");
+
+			var age = prompt("User age:");
+			var gender = prompt("User gender:").toUpperCase();
+
+			while(!gender == "M" || !gender == "F") {
+				alert("Gender is invalid - please enter m or f...");
+				gender = prompt("User gender:");
+			}
+
+			var user = new person(first, last, age, gender);
+			//people[objCount] = window[first + "." + last];
+
+
+			document.write("<div id='person_title'>");
+			document.write("<h1><u>Your properties </u></h1><br>");
+			document.write("</div>");
+			with(user) {
+				document.write("<div id='person_info'>");
+				document.write("Name: " + first + " " + last + "<br>");
+				document.write("Age: " + age + "<br>");
+				document.write("Gender: " + gender + "<br>");
+				document.write("Life Expectency: " + life_left + " years<br><br>");
+				document.write("Hi, " + first + " " + last + "! As a person who is " + age + " years old, you are expected live " + life_left + " more years!");
+				document.write("</div>");
+			}
+
+			function person(first, last, age, gender) {
+				this.first_name = first;
+				this.last_name = last;
+				this.age = age;
+				this.life_left = life_expect();
+
+				if(gender == "M") {
+					this.gender = "Male";
+				} else {
+					this.gender = "Female";
+				}
+
+				function life_expect(){
+					if(this.gender == "M"){
+						return 76 - this.age;
+					} else {
+						return 81 - this.age;
+					}
+				}
+			}
+
+		</script>
+
+	</body>
+
+</html>

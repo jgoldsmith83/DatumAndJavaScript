@@ -1,0 +1,114 @@
+<!DOCTYPE HTML>
+
+<html>
+
+	<head>
+		<title>Chapter 6 Assignment 2</title>
+		
+		<style type="text/css">
+			fieldset {
+				border: 0;
+				align: right;
+				position: relative;
+			}
+			
+			#container {
+				position: absolute;
+				background-color: #FFFFFF;
+				color: #000000;
+				left: 600px;
+			}
+			
+			#submit {
+				position: relative;
+				margin-left: 110px;
+			}
+			
+			#loan-specs {
+				position: absolute;
+				width: 400px;
+				height: 400px;
+				left: 550px;
+				top: 200px;
+				background-color: #FFFFFF;
+				color: #000000;
+			}
+		</style>
+		
+	</head>
+
+	<body style="background-color: #D2B48C;">
+	
+		<div id="container">
+			<form style="border: 0;	">
+				<fieldset>
+					<label for="price">Vehicle Price: </label>
+					<input type="text" placeholder="10000" id="price">
+				</fieldset>
+				
+				<fieldset>
+					<label for="down">Down Payment: </label>
+					<input type="text" placeholder="1000" id="down">
+				</fieldset>
+				
+				<fieldset>
+					<label for="apr">Loan APR: </label>
+					<input type="text" placeholder="5.5" id="apr">
+				</fieldset>
+				
+					<input type="button" type="submit" value="Calculate" id="submit" onclick="work()">
+			</form>
+		</div>
+		
+		<div id="loan-specs"></div>
+		
+		
+		<script>
+		
+			document.write("<h1>Loan Calculator</h1><br>");
+			
+			function work() {
+			
+				var price = document.getElementById("price").value;
+				parseInt(price);
+				var down = document.getElementById("down").value;
+				parseInt(down);
+				var apr = document.getElementById("apr").value;
+				parseFloat(apr);
+				
+				var loanAmt = price - down;
+				var monthlyInterest = apr / 1200;
+				
+				var loanSpecs = document.getElementById("loan-specs");
+				
+				
+				loanSpecs.innerHtml = "<div>";
+				loanSpecs.innerHtml = "<div><h3>" + "Vehicle Price: $" + price + "</h3></div><br>";
+				loanSpecs.innerHtml = "Down Payment: $" + down + "<br><br>";
+				loanSpecs.innerHtml = "Loan Amount: $" + loanAmt + "</div><br>";
+				loanSpecs.innerHtml = "Interest Rate: " + apr + "%<br>";
+				loanSpecs.innerHtml = "</div>";
+				
+				loanSpecs.innerHtml = "<div>";
+				loanSpecs.innerHtml = "<pre>";
+				loanSpecs.innerHtml = "<strong>Loan Term          Monthly Payment</strong><br>";
+				loanSpecs.innerHtml = "   24                  $" + calcPayment(loanAmt, monthlyInterest, 24).toFixed(2) + "<br>";
+				loanSpecs.innerHtml = "   36                  $" + calcPayment(loanAmt, monthlyInterest, 36).toFixed(2) + "<br>";
+				loanSpecs.innerHtml = "   48                  $" + calcPayment(loanAmt, monthlyInterest, 48).toFixed(2) + "<br>";
+				loanSpecs.innerHtml = "   60                  $" + calcPayment(loanAmt, monthlyInterest, 60).toFixed(2) + "<br>";
+				loanSpecs.innerHtml = "</pre>";
+				loanSpecs.innerHtml = "</div>";
+			}
+			
+			function calcPayment(loanAmt, monthlyInterest, term){
+				var base = Math.pow(1 + monthlyInterest, term);
+				var payment = loanAmt * monthlyInterest / (1 - (1/base));
+				
+				return payment;
+			}
+			
+		</script>
+		
+	</body>
+
+</html>
