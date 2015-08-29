@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+
+<html>
+
+	<head>
+		<title>Chapter 10 Assignment</title>
+	</head>
+
+	<body>
+		<div>
+
+		<h1>Event Handlers at Work!</h1>
+
+		<a href="http://www.google.com" onmouseover="greenBG()" onmouseout="whiteBG()">Search Here</a>
+		<br>
+		<br>
+		<input type="button" value="Click Me" onclick="message()"/>
+		<br>
+		<br>
+		My name is: <input type="text" value="Sam" onchange="nameMessage()" id="name_box"/>
+		 Go ahead, change my name.
+		<br>
+		<br>
+		<input type="button" value="Reload" onclick="javascript: location.reload(); alert('Page has been reloaded')"/>
+		<br>
+		<br>
+		<input type="button" value="My favorite site" onclick="javascript: window.open('http://www.w3schools.com')"
+
+		</div>
+	</body>
+
+	<script>
+		function greenBG() {
+			document.body.style.background = "#008000";
+		}
+
+		function whiteBG() {
+			document.body.style.background = "#FFFFFF";
+		}
+
+		function message() {
+			alert("You clicked the button!");
+		}
+
+		function nameMessage() {
+			var nameBox = document.getElementById("name_box");
+			var name = document.getElementById("name_box").value;
+			alert("Name was changed to: " + name);
+			nameBox['value'] = "Sam";
+		}
+	</script>
+
+</html>
